@@ -1,20 +1,21 @@
 <Activity mc:Ignorable="sap sap2010" x:Class="Shop_For_One_Client" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=System.Private.CoreLib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data.Common" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <x:Members>
-    <x:Property Name="in_client_dt" Type="InArgument(sd:DataTable)" />
     <x:Property Name="io_purchased" Type="InOutArgument(x:Int32)" />
     <x:Property Name="io_bill" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_found" Type="InOutArgument(x:Boolean)" />
     <x:Property Name="out_item" Type="OutArgument(x:String)" />
     <x:Property Name="out_quantity" Type="OutArgument(x:Int32)" />
-    <x:Property Name="io_inventory_dt" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="expense_dt" Type="OutArgument(sd:DataTable)" />
     <x:Property Name="io_commission" Type="InOutArgument(x:Double)" />
     <x:Property Name="io_note" Type="InOutArgument(x:String)" />
+    <x:Property Name="io_inventory_dt" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_clients_dt" Type="InOutArgument(sd:DataTable)" />
+    <x:Property Name="io_shoplist_dt" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>634,1871</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>617,1664</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Shop_For_One_Client_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -97,23 +98,23 @@
       <AssemblyReference>UiPath.Excel</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="The inner-shell:&#xA;Loop through one client's shopping list of items and add them to the cart." DisplayName="Shop_For_One_Client" sap:VirtualizedContainerService.HintSize="589,1512" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="The inner-shell:&#xA;Loop through one client's shopping list of items and add them to the cart." DisplayName="Shop_For_One_Client" sap:VirtualizedContainerService.HintSize="589,1599" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <sap:WorkflowViewStateService.ViewState>
       <scg:Dictionary x:TypeArguments="x:String, x:Object">
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[io_inventory_dt]" DisplayName="FOR TESTING" sap:VirtualizedContainerService.HintSize="527,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Wk of 02-20-2023" WorkbookPath="in\Wk of 02-20-2023\!Inventory.xlsx" />
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[in_client_dt]" DisplayName="FOR TESTING" sap:VirtualizedContainerService.HintSize="527,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Andy" WorkbookPath="in\Wk of 02-20-2023\andy.xlsx" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[io_inventory_dt]" DisplayName="FOR TESTING" sap:VirtualizedContainerService.HintSize="527,88" sap2010:WorkflowViewState.IdRef="ReadRange_1" SheetName="Wk of 02-20-2023" WorkbookPath="in\Inventory.xlsx" />
+    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[io_clients_dt]" DisplayName="FOR TESTING" sap:VirtualizedContainerService.HintSize="527,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="Andy" WorkbookPath="in\Wk of 02-20-2023\001_02-20-2023.xlsx" />
     <ui:BuildDataTable DataTable="[expense_dt]" DisplayName="Start Building Expense Report (DT)" sap:VirtualizedContainerService.HintSize="527,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Column1&quot; minOccurs=&quot;0&quot;&gt;&#xA;                  &lt;xs:simpleType&gt;&#xA;                    &lt;xs:restriction base=&quot;xs:string&quot;&gt;&#xA;                      &lt;xs:maxLength value=&quot;100&quot; /&gt;&#xA;                    &lt;/xs:restriction&gt;&#xA;                  &lt;/xs:simpleType&gt;&#xA;                &lt;/xs:element&gt;&#xA;                &lt;xs:element name=&quot;Column2&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;  &lt;TableName&gt;&#xA;    &lt;Column1&gt;text&lt;/Column1&gt;&#xA;    &lt;Column2&gt;1&lt;/Column2&gt;&#xA;  &lt;/TableName&gt;&#xA;&lt;/NewDataSet&gt;" />
-    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[in_client_dt]" DisplayName="For Each Item in Client Shopping List (DT)" sap:VirtualizedContainerService.HintSize="527,1003" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
+    <ui:ForEachRow ColumnNames="{x:Null}" CurrentIndex="{x:Null}" DataTable="[io_shoplist_dt]" DisplayName="For Each Item in Client Shopping List (DT)" sap:VirtualizedContainerService.HintSize="527,1090" sap2010:WorkflowViewState.IdRef="ForEachRow_1">
       <ui:ForEachRow.Body>
         <ActivityAction x:TypeArguments="sd:DataRow">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="sd:DataRow" Name="row" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="493,887" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="493,974" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="test" />
             </Sequence.Variables>
@@ -122,7 +123,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Values are For Each Item&#xA;1. Item : item name&#xA;2. Purchased: quantity of item purchased&#xA;3. Bill: running total of purchased Items&#xA;4. Notes: notes for expense report&#xA;5. Quantity:  quantity of 'Item' requested by client&#xD;&#xA;6. Commission: running commission earnings" DisplayName="Values: From Client &amp; For Reports" sap:VirtualizedContainerService.HintSize="431,373" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
+            <ui:MultipleAssign sap2010:Annotation.AnnotationText="Values are For Each Item&#xA;1. Item : item name&#xA;2. Purchased: quantity of item purchased&#xA;3. Bill: running total of purchased Items&#xA;4. Note: a note for expense report&#xA;5. Quantity:  quantity of 'Item' requested by client&#xA;6. Commission: running commission earnings" DisplayName="Values: From Client &amp; For Reports" sap:VirtualizedContainerService.HintSize="431,373" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
               <ui:MultipleAssign.AssignOperations>
                 <scg:List x:TypeArguments="ui:AssignOperation" Capacity="16">
                   <ui:AssignOperation sap2010:WorkflowViewState.IdRef="AssignOperation_1">
@@ -185,7 +186,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Add_To_Cart.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="431,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_Shopping\Add_To_Cart.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Calculates values first to determine if item can be added to cart, then adds item to cart if applicable&#xA;&#xA;*Add to Cart is a workflow nested inside of the Calculate Cart workflow" DisplayName="Calculate then Add to Cart" sap:VirtualizedContainerService.HintSize="431,200" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_Shopping\Calculate_Cart.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InOutArgument x:TypeArguments="x:Int32" x:Key="io_purchased">
                   <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_purchased" />
@@ -196,9 +197,6 @@
                 <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_inventory_dt">
                   <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_inventory_dt" />
                 </InOutArgument>
-                <InArgument x:TypeArguments="x:String" x:Key="in_item">
-                  <VisualBasicValue x:TypeArguments="x:String" ExpressionText="out_item" />
-                </InArgument>
                 <InArgument x:TypeArguments="x:Int32" x:Key="in_quantity">
                   <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="out_quantity" />
                 </InArgument>
@@ -208,7 +206,18 @@
                 <InOutArgument x:TypeArguments="x:String" x:Key="io_note">
                   <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_note" />
                 </InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_clients_dt">
+                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_clients_dt" />
+                </InOutArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="io_item">
+                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_item" />
+                </InOutArgument>
               </ui:InvokeWorkflowFile.Arguments>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:InvokeWorkflowFile>
             <ui:OutputDataTable DataTable="[io_inventory_dt]" DisplayName="Output Data Table" sap:VirtualizedContainerService.HintSize="431,80" sap2010:WorkflowViewState.IdRef="OutputDataTable_1" Text="[test]" />
             <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="431,90" sap2010:WorkflowViewState.IdRef="WriteLine_2" Text="[test]" />

@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>634,1473</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>617,3863</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Pega_Inventory_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="39">
@@ -115,13 +115,9 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Gets Pega's current inventory from its website" DisplayName="Get_Pega_Inventory_From_Website" sap:VirtualizedContainerService.HintSize="594,3630" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Gets Pega's current inventory from its website" DisplayName="Get_Pega_Inventory_From_Website" sap:VirtualizedContainerService.HintSize="594,3798" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
-      <Variable x:TypeArguments="x:String" Name="name">
-        <Variable.Default>
-          <Literal x:TypeArguments="x:String">Aniseed Syrup</Literal>
-        </Variable.Default>
-      </Variable>
+      <Variable x:TypeArguments="x:String" Default="Aniseed Syrup" Name="name" />
       <Variable x:TypeArguments="x:String" Name="price" />
       <Variable x:TypeArguments="x:String" Name="stock" />
       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enumTables" />
@@ -132,7 +128,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:BuildDataTable DataTable="[out_inventory_dt]" DisplayName="Start Building Pega's Inventory (DT)" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xD;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xD;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xD;&#xA;      &lt;xs:complexType&gt;&#xD;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xD;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xD;&#xA;            &lt;xs:complexType&gt;&#xD;&#xA;              &lt;xs:sequence&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Product&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Price_x0020__x0028__x0024__x0029_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;                &lt;xs:element name=&quot;Stock&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xD;&#xA;              &lt;/xs:sequence&gt;&#xD;&#xA;            &lt;/xs:complexType&gt;&#xD;&#xA;          &lt;/xs:element&gt;&#xD;&#xA;        &lt;/xs:choice&gt;&#xD;&#xA;      &lt;/xs:complexType&gt;&#xD;&#xA;    &lt;/xs:element&gt;&#xD;&#xA;  &lt;/xs:schema&gt;&#xD;&#xA;&lt;/NewDataSet&gt;" />
+    <ui:BuildDataTable DataTable="[out_inventory_dt]" DisplayName="Start Building Pega's Inventory (DT)" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Product&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Price_x0020__x0028__x0024__x0029_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Stock&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
     <ui:MultipleAssign DisplayName="Create Inventory Values" sap:VirtualizedContainerService.HintSize="532,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
         <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">
@@ -169,13 +165,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: Home | Pega Studio Training Web Application" sap:VirtualizedContainerService.HintSize="532,3029" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="808ee09b-c064-42dc-bdc1-aa0060e80900" Version="V2">
+    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: Home | Pega Studio Training Web Application" sap:VirtualizedContainerService.HintSize="532,3197" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InteractionMode="DebuggerApi" ScopeGuid="808ee09b-c064-42dc-bdc1-aa0060e80900" Version="V2">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="The inventory table on Pega's website has the appearance of a single table. &#xD;&#xA;&#xD;&#xA;However, every visible row is actually an individual table on its own. This series of tables is not contained as a table itself or a list of tables. It is raw entries of tables simply adjacent to each other. &#xD;&#xA;&#xD;&#xA;Because of this, the approach to extracting data has to be rather creative." DisplayName="Go to Inventory Page and Extract Data" sap:VirtualizedContainerService.HintSize="498,2812" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence sap2010:Annotation.AnnotationText="The inventory table on Pega's website has the appearance of a single table. &#xA;&#xA;However, every visible row is actually an individual table on its own. This series of tables is not contained as a table itself or a list of tables. It is raw entries of tables simply adjacent to each other. &#xA;&#xA;Because of this, the approach to extracting data has to be rather creative." DisplayName="Go to Inventory Page and Extract Data" sap:VirtualizedContainerService.HintSize="498,2980" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="isFirst" />
             </Sequence.Variables>
@@ -190,7 +186,7 @@
                 <uix:TargetAnchorable BrowserURL="https://training.openspan.com/home" DesignTimeRectangle="1348, 185, 49, 14" DesignTimeScaleFactor="1" ElementType="Text" FriendlyName="'Inventory'" FullSelectorArgument="&lt;webctrl parentid='inventory_menu' tag='A' /&gt;" FuzzySelectorArgument="&lt;webctrl parentid='inventory_menu' tag='A' type='' class='menu_option' aaname='Inventory' check:innerText='Inventory' /&gt;" Guid="0ca28d2b-be0e-4cce-94d9-0b0bf9bc95cc" ImageBase64="iVBORw0KGgoAAAANSUhEUgAAADUAAAASCAYAAAD7T5b+AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8YQUAAAAJcEhZcwAADsMAAA7DAcdvqGQAAAFrSURBVEhL7VMxksIwDPTj0iZPSUd3eQANZbqUvICWgg/Q0dHfA/iAzrIkSzIJMJm5wkCxM7a1kndlOVx+b/Bu+JqqBe9var8J0IxXR/h3nCdowgD7udhKfJipwwChHaBvA4SA6GB7lvMJTpLnRF1hm/kB+oPn9LG+jx2h532QGolbnCHSvR3F2h38xHty/QjULvvHpmIBIrLYzTGuUQgbjLzT2PE55cua8pnHQqV24kljXFPI5CzP1ot7ey/laQOemFKiFiGDxKO17bp2z8SScBVEXZ8x5QzK3kxIGbOGs8Gn46djZjuT106EHSVFqleKXTJVCrdTUeihplEMdWszV5rKQpCTO2QEcE7Gq6ZKXtovmSJNzTi50UOsMyV/LL6E7RDme+N2/F4wxa8tGlI94c2YkjtUF2GlKd4XHbJm8+jh+SNTeWw5LkLt2V2OwP5phTNVHcpmMeo1hS8XX7N8JUTdL7WAr6k6cIM/uBlkIyjm4BoAAAAASUVORK5CYII=" InformativeScreenshot="457eb116b5db1f3612e0ffeb399dd5b0.png" ScopeSelectorArgument="&lt;html app='chrome.exe' title='Home | Pega Studio Training Web Application' /&gt;" SearchSteps="FuzzySelector, Image" Version="V1" Visibility="Interactive" />
               </uix:NClick.Target>
             </uix:NClick>
-            <ui:FindChildren sap2010:Annotation.AnnotationText="The Content 'DIV' is the closest parent to the raw collection of datatables. Therefore this is where we begin to find child elements.&#xD;&#xA;&#xD;&#xA;Here we filter an enumerable that contains all the child elements that are tables. (tag='table')" Children="[enumTables]" DisplayName="Find Children of Content 'DIV'" Filter="&lt;webctrl tag='table' class='orders_list' /&gt;" sap:VirtualizedContainerService.HintSize="436,209" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_CHILDREN">
+            <ui:FindChildren sap2010:Annotation.AnnotationText="The Content 'DIV' is the closest parent to the raw collection of datatables. Therefore this is where we begin to find child elements.&#xA;&#xA;Here we filter an enumerable that contains all the child elements that are tables. (tag='table' class='orders_list')&#xD;&#xA;&#xD;&#xA;*An alternative approach is to filter by (tag='table' and id='orders_inventory_content') this avoids the issue of needing to skip the first table. I avoided this in order to follow what we learned about avoiding id attributes. I did however implement this strategy later on in 'Add-To_Cart.xaml'" Children="[enumTables]" DisplayName="Find Children of Content 'DIV'" Filter="&lt;webctrl tag='table' class='orders_list' /&gt;" sap:VirtualizedContainerService.HintSize="436,314" sap2010:WorkflowViewState.IdRef="FindChildren_3" Scope="FIND_CHILDREN">
               <ui:FindChildren.Target>
                 <ui:Target ClippingRegion="{x:Null}" Element="{x:Null}" Id="f8fe31f1-6f1f-4f51-9f0d-58263f576cd5" InformativeScreenshot="804f5e6ae1ea8b3a39937dcbe5f93d80" Selector="&lt;html app='chrome.exe' title='Inventory | Pega Studio Training Web Application' /&gt;&lt;webctrl class='content' parentid='load_content' tag='DIV' /&gt;">
                   <ui:Target.TimeoutMS>
@@ -207,7 +203,7 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:FindChildren>
-            <Assign sap2010:Annotation.AnnotationText="The very first table in the enumerable is only a visual header.&#xD;&#xA;&#xD;&#xA; An element cannot be removed from an enumerable, therefore we will use a boolean to skip it in the 'For Each Table in Enumerable of Tables' loop" DisplayName="Create isFirst" sap:VirtualizedContainerService.HintSize="436,179" sap2010:WorkflowViewState.IdRef="Assign_5">
+            <Assign sap2010:Annotation.AnnotationText="The very first table in the enumerable is only a visual header.&#xA;&#xA; An element cannot be removed from an enumerable, therefore we will use a boolean to skip it in the 'For Each Table in Enumerable of Tables' loop" DisplayName="Create isFirst" sap:VirtualizedContainerService.HintSize="436,179" sap2010:WorkflowViewState.IdRef="Assign_5">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:Boolean">[isFirst]</OutArgument>
               </Assign.To>
@@ -220,13 +216,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="436,1917" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[enumTables]">
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="436,1978" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[enumTables]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="ui:UiElement">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:UiElement" Name="table" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="400,1791" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="400,1821" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enumTemp1" />
                       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enumTemp2" />
@@ -263,7 +259,7 @@
                         </Sequence>
                       </If.Then>
                     </If>
-                    <ui:FindChildren sap2010:Annotation.AnnotationText="For each table, this finds the name and stock UI elements based on their tag. (tag='b')&#xD;&#xA;&#xD;&#xA;*This includes unwanted elements. The name is the first element, and the stock is the last element. " Children="[enumTemp1]" DisplayName="Find Name and Stock UI Elements" Filter="&lt;webctrl tag='b'/&gt;" sap:VirtualizedContainerService.HintSize="338,174" sap2010:WorkflowViewState.IdRef="FindChildren_4" Scope="FIND_DESCENDANTS">
+                    <ui:FindChildren sap2010:Annotation.AnnotationText="For each table, this finds the name and stock UI elements based on their tag. (tag='b')&#xA;&#xA;*This includes unwanted elements. &#xA;&#xA;*For later use, the name is the first element, and the stock is the last element* " Children="[enumTemp1]" DisplayName="Find Name and Stock UI Elements" Filter="&lt;webctrl tag='b'/&gt;" sap:VirtualizedContainerService.HintSize="338,204" sap2010:WorkflowViewState.IdRef="FindChildren_4" Scope="FIND_DESCENDANTS">
                       <ui:FindChildren.Target>
                         <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[table]" Id="cc7e2a44-5b07-41d4-8f35-dd2293dd1038">
                           <ui:Target.TimeoutMS>
@@ -280,7 +276,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:FindChildren>
-                    <ui:FindChildren sap2010:Annotation.AnnotationText="For each table, this finds the price UI element based on having the '$' character. (tag='td' innerHTML='$*' )&#xD;&#xA;&#xD;&#xA;*This is element is referred to as 'Cost' on the website*" Children="[enumTemp2]" DisplayName="Find Price UI Element" Filter="&lt;webctrl tag='td' innerHTML='$*' /&gt;" sap:VirtualizedContainerService.HintSize="338,159" sap2010:WorkflowViewState.IdRef="FindChildren_5" Scope="FIND_DESCENDANTS">
+                    <ui:FindChildren sap2010:Annotation.AnnotationText="For each table, this finds the price UI element based on having the '$' character. (tag='td' innerHTML='$*' )&#xA;&#xA;*This is element is referred to as 'Cost' on the website*" Children="[enumTemp2]" DisplayName="Find Price UI Element" Filter="&lt;webctrl tag='td' innerHTML='$*' /&gt;" sap:VirtualizedContainerService.HintSize="338,159" sap2010:WorkflowViewState.IdRef="FindChildren_5" Scope="FIND_DESCENDANTS">
                       <ui:FindChildren.Target>
                         <ui:Target ClippingRegion="{x:Null}" Selector="{x:Null}" Element="[table]" Id="cc7e2a44-5b07-41d4-8f35-dd2293dd1038">
                           <ui:Target.TimeoutMS>
@@ -311,7 +307,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </uix:NGetText>
-                    <uix:NGetText sap2010:Annotation.AnnotationText="Gets the text from the price UI Element&#xA;&#xA;*Need to remove '$'" DisplayName="Get Price" sap:VirtualizedContainerService.HintSize="338,194" sap2010:WorkflowViewState.IdRef="NGetText_3" InUiElement="[enumTemp2(0)]" TextString="[price]" Version="V3">
+                    <uix:NGetText sap2010:Annotation.AnnotationText="Gets the text from the price UI Element&#xA;&#xA;*Need to remove '$'*" DisplayName="Get Price" sap:VirtualizedContainerService.HintSize="338,194" sap2010:WorkflowViewState.IdRef="NGetText_3" InUiElement="[enumTemp2(0)]" TextString="[price]" Version="V3">
                       <sap:WorkflowViewStateService.ViewState>
                         <scg:Dictionary x:TypeArguments="x:String, x:Object">
                           <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
@@ -333,10 +329,15 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:AddDataRow>
-                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[String.Format(&quot;Added {0} to Inventory&quot;,name)]" />
+                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[String.Format(&quot;Added {0} {1} to Inventory for ${2} each&quot;,stock,name,price)]" />
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
+              <sap:WorkflowViewStateService.ViewState>
+                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                  <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                </scg:Dictionary>
+              </sap:WorkflowViewStateService.ViewState>
             </ui:ForEach>
           </Sequence>
         </ActivityAction>
