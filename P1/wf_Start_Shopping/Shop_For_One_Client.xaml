@@ -15,7 +15,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>617,1664</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>579,1664</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Shop_For_One_Client_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="29">
@@ -186,32 +186,16 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </ui:MultipleAssign>
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Calculates values first to determine if item can be added to cart, then adds item to cart if applicable&#xA;&#xA;*Add to Cart is a workflow nested inside of the Calculate Cart workflow" DisplayName="Calculate then Add to Cart" sap:VirtualizedContainerService.HintSize="431,200" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_Shopping\Calculate_Cart.xaml">
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Calculates values first to determine if item can be added to cart, then adds item to cart if applicable&#xA;&#xA;*Add to Cart is a workflow nested inside of the Calculate Cart workflow" DisplayName="Review_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="431,200" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_Start_Shopping\Review_Item.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_purchased">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_purchased" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="x:Double" x:Key="io_bill">
-                  <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_bill" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_inventory_dt">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_inventory_dt" />
-                </InOutArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="in_quantity">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="out_quantity" />
-                </InArgument>
-                <InOutArgument x:TypeArguments="x:Double" x:Key="io_commission">
-                  <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_commission" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="x:String" x:Key="io_note">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_note" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_clients_dt">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_clients_dt" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="x:String" x:Key="io_item">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_item" />
-                </InOutArgument>
+                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_purchased">[io_purchased]</InOutArgument>
+                <InOutArgument x:TypeArguments="x:Double" x:Key="io_bill">[io_bill]</InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_inventory_dt">[io_inventory_dt]</InOutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_quantity">[out_quantity]</InArgument>
+                <InOutArgument x:TypeArguments="x:Double" x:Key="io_commission">[io_commission]</InOutArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="io_note">[io_note]</InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_clients_dt">[io_clients_dt]</InOutArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="io_item">[out_item]</InOutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">

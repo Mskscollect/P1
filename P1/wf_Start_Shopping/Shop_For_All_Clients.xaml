@@ -2,12 +2,12 @@
   <x:Members>
     <x:Property Name="io_inventory_dt" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="out_shoplist_dt" Type="OutArgument(sd:DataTable)" />
-    <x:Property Name="out_clients_dt" Type="OutArgument(sd:DataTable)" />
+    <x:Property Name="io_clients_dt" Type="InOutArgument(sd:DataTable)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>542,1473</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>581,1377</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Shop_For_All_Clients_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="30">
@@ -98,7 +98,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Datatables&#xD;&#xA;1. Inventory: This is the inventory from Pega's website&#xD;&#xA;2. Clients: This is the datatable for client personal information&#xD;&#xA;2. Shoplist: This is a shopping list scraped from an email this week&#xD;&#xA;&#xD;&#xA;Sheet Formats:&#xD;&#xA;1. Product, Price ($), Stock&#xD;&#xA;2. Client ID, First Name, Last Name, Address, Phone" DisplayName="Shop_For_All_Clients" sap:VirtualizedContainerService.HintSize="499,1245" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Datatables&#xA;1. Inventory: This is the inventory from Pega's website&#xA;2. Clients: This is the datatable for client personal information&#xA;2. Shoplist: This is a shopping list scraped from an email this week&#xA;&#xA;Sheet Formats:&#xA;1. Product, Price ($), Stock&#xA;2. Client ID, First Name, Last Name, Address, Phone, Email, " DisplayName="Shop_For_All_Clients" sap:VirtualizedContainerService.HintSize="511,1148" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="s:String[]" Name="filesList" />
     </Sequence.Variables>
@@ -108,17 +108,22 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Get_Pega_Inventory_From_Website.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="437,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_Setting_Up\Get_Pega_Inventory_From_Website.xaml">
+    <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Gets the Pega inventory datatable" DisplayName="Read Pega's Inventory" sap:VirtualizedContainerService.HintSize="449,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_On_Start\Read_Inventory.xaml">
       <ui:InvokeWorkflowFile.Arguments>
         <OutArgument x:TypeArguments="sd:DataTable" x:Key="out_inventory_dt">[io_inventory_dt]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
+      <sap:WorkflowViewStateService.ViewState>
+        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+          <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+        </scg:Dictionary>
+      </sap:WorkflowViewStateService.ViewState>
     </ui:InvokeWorkflowFile>
-    <Assign sap2010:Annotation.AnnotationText="Gets a list of all the client sheets found under this week's folder" DisplayName="Create List of Files" sap:VirtualizedContainerService.HintSize="437,103" sap2010:WorkflowViewState.IdRef="Assign_4">
+    <Assign sap2010:Annotation.AnnotationText="Gets a list of all the shopping lists found under this week's folder" DisplayName="Create List of Files" sap:VirtualizedContainerService.HintSize="449,103" sap2010:WorkflowViewState.IdRef="Assign_4">
       <Assign.To>
         <OutArgument x:TypeArguments="s:String[]">[filesList]</OutArgument>
       </Assign.To>
       <Assign.Value>
-        <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(String.Format("in\Wk of {0}\",Now.AddDays(2-Weekday(Now)).ToString("MM-dd-yyyy")))]</InArgument>
+        <InArgument x:TypeArguments="s:String[]">[Directory.GetFiles(String.Format("in\Week of {0}\",Now.AddDays(2-Weekday(Now)).ToString("MM-dd-yyyy")))]</InArgument>
       </Assign.Value>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -126,14 +131,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </Assign>
-    <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_clients_dt]" DisplayName="Read Range Workbook" sap:VirtualizedContainerService.HintSize="437,88" sap2010:WorkflowViewState.IdRef="ReadRange_3" SheetName="Clients" WorkbookPath="in\Clients.xlsx" />
-    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Shopping List in This Week's Folder" sap:VirtualizedContainerService.HintSize="437,578" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[filesList]">
+    <ui:ForEach x:TypeArguments="x:String" CurrentIndex="{x:Null}" DisplayName="For Each Shopping List in This Week's Folder" sap:VirtualizedContainerService.HintSize="449,578" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[filesList]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="x:String">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:String" Name="fileName" />
           </ActivityAction.Argument>
-          <Sequence sap:VirtualizedContainerService.HintSize="401,453" sap2010:WorkflowViewState.IdRef="Sequence_3">
+          <Sequence sap:VirtualizedContainerService.HintSize="413,453" sap2010:WorkflowViewState.IdRef="Sequence_3">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:String" Name="sheetName" />
             </Sequence.Variables>
@@ -142,7 +146,7 @@
                 <x:Boolean x:Key="IsExpanded">True</x:Boolean>
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
-            <Assign DisplayName="Get sheetName" sap:VirtualizedContainerService.HintSize="339,61" sap2010:WorkflowViewState.IdRef="Assign_3">
+            <Assign DisplayName="Get sheetName" sap:VirtualizedContainerService.HintSize="351,61" sap2010:WorkflowViewState.IdRef="Assign_3">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[sheetName]</OutArgument>
               </Assign.To>
@@ -150,8 +154,8 @@
                 <InArgument x:TypeArguments="x:String">[Path.GetFileNameWithoutExtension(fileName).Substring(0,Path.GetFileNameWithoutExtension(fileName).IndexOf("_"))]</InArgument>
               </Assign.Value>
             </Assign>
-            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_shoplist_dt]" DisplayName="Read Shopping List Sheet" sap:VirtualizedContainerService.HintSize="339,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[sheetName]" WorkbookPath="[fileName]" />
-            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Shop_For_One_Client.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="339,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="wf_Shopping\Shop_For_One_Client.xaml">
+            <ui:ReadRange Range="{x:Null}" AddHeaders="True" DataTable="[out_shoplist_dt]" DisplayName="Read Shopping List Sheet (DT)" sap:VirtualizedContainerService.HintSize="351,88" sap2010:WorkflowViewState.IdRef="ReadRange_2" SheetName="[sheetName]" WorkbookPath="[fileName]" />
+            <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" DisplayName="Shop_For_One_Client.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="351,113" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="wf_Start_Shopping\Shop_For_One_Client.xaml">
               <ui:InvokeWorkflowFile.Arguments>
                 <InArgument x:TypeArguments="sd:DataTable" x:Key="in_client_dt">[out_shoplist_dt]</InArgument>
                 <InOutArgument x:TypeArguments="x:Int32" x:Key="io_purchased" />

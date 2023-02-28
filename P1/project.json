@@ -1,6 +1,6 @@
 {
-  "name": "P0",
-  "description": "P0 Instacart Service\r\n",
+  "name": "P1",
+  "description": "P1 Pega Website\r\n",
   "main": "Main.xaml",
   "dependencies": {
     "UiPath.Excel.Activities": "[2.16.2]",
