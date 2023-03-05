@@ -4,10 +4,8 @@
     <x:Property Name="io_inventory_dt" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="in_quantity" Type="InArgument(x:Int32)" />
     <x:Property Name="io_note" Type="InOutArgument(x:String)" />
-    <x:Property Name="io_clients_dt" Type="InOutArgument(sd:DataTable)" />
     <x:Property Name="io_item" Type="InOutArgument(x:String)" />
     <x:Property Name="io_expense_dt" Type="InOutArgument(sd:DataTable)" />
-    <x:Property Name="io_browser" Type="InOutArgument(ui:UiElement)" />
   </x:Members>
   <VisualBasic.Settings>
     <x:Null />
@@ -98,7 +96,7 @@
       <AssemblyReference>UiPath.UIAutomationCore</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="If item can be purchased&#xA;Then update values, update inventory, update expense report, and add to cart.&#xA;Else add note and exits" DisplayName="Check_Item" sap:VirtualizedContainerService.HintSize="696,2077" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="If item can be purchased&#xA;Then update values, update inventory and update expense report&#xA;Else add note and exits" DisplayName="Check_Item" sap:VirtualizedContainerService.HintSize="696,2077" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Double" Name="price" />
       <Variable x:TypeArguments="x:Int32" Name="rowIndex" />
@@ -131,12 +129,9 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
       <Flowchart.StartNode>
-        <x:Reference>__ReferenceID11</x:Reference>
+        <x:Reference>__ReferenceID10</x:Reference>
       </Flowchart.StartNode>
-      <FlowDecision x:Name="__ReferenceID11" DisplayName="If Item is in Pega's Inventory" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-        <FlowDecision.Condition>
-          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="rowIndex &gt;= 0" />
-        </FlowDecision.Condition>
+      <FlowDecision x:Name="__ReferenceID10" Condition="[rowIndex &gt;= 0]" DisplayName="If Item is in Pega's Inventory" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">33,116.5</av:Point>
@@ -217,10 +212,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:MultipleAssign>
                     <FlowStep.Next>
-                      <FlowDecision x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="Compares stock to quantity requested (in_quantity)" DisplayName="If there is enough stock" sap:VirtualizedContainerService.HintSize="141,144" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
-                        <FlowDecision.Condition>
-                          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="stock&gt;=in_quantity" />
-                        </FlowDecision.Condition>
+                      <FlowDecision x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="Compares stock to quantity requested (in_quantity)" Condition="[stock&gt;=in_quantity]" DisplayName="If there is enough stock" sap:VirtualizedContainerService.HintSize="141,144" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -286,12 +278,11 @@
                                   </sap:WorkflowViewStateService.ViewState>
                                 </ui:UpdateRowItem>
                                 <FlowStep.Next>
-                                  <FlowStep x:Name="__ReferenceID10">
+                                  <FlowStep x:Name="__ReferenceID9">
                                     <sap:WorkflowViewStateService.ViewState>
                                       <scg:Dictionary x:TypeArguments="x:String, x:Object">
                                         <av:Point x:Key="ShapeLocation">350,1013</av:Point>
                                         <av:Size x:Key="ShapeSize">200,94</av:Size>
-                                        <av:PointCollection x:Key="ConnectorLocation">450,1107 450,1175.5</av:PointCollection>
                                       </scg:Dictionary>
                                     </sap:WorkflowViewStateService.ViewState>
                                     <ui:AddDataRow DataRow="{x:Null}" sap2010:Annotation.AnnotationText="Add item, purchased, and cost to expense report" ArrayRow="[New Object(){io_item,io_purchased,(io_purchased*price)}]" DataTable="[io_expense_dt]" DisplayName="Add to Expense DT" sap:VirtualizedContainerService.HintSize="200,94" sap2010:WorkflowViewState.IdRef="AddDataRow_1">
@@ -302,28 +293,6 @@
                                         </scg:Dictionary>
                                       </sap:WorkflowViewStateService.ViewState>
                                     </ui:AddDataRow>
-                                    <FlowStep.Next>
-                                      <FlowStep x:Name="__ReferenceID9">
-                                        <sap:WorkflowViewStateService.ViewState>
-                                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                            <av:Point x:Key="ShapeLocation">350,1175.5</av:Point>
-                                            <av:Size x:Key="ShapeSize">200,109</av:Size>
-                                          </scg:Dictionary>
-                                        </sap:WorkflowViewStateService.ViewState>
-                                        <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="The UI Automation for purchasing product from Pega's website" DisplayName="UI_Add_To_Cart.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="200,109" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_1" UnSafe="False" WorkflowFileName="wf_Shopping\UI_Add_To_Cart.xaml">
-                                          <ui:InvokeWorkflowFile.Arguments>
-                                            <InArgument x:TypeArguments="x:String" x:Key="in_item">[io_item]</InArgument>
-                                            <InArgument x:TypeArguments="x:Int32" x:Key="in_purchased">[io_purchased]</InArgument>
-                                            <InOutArgument x:TypeArguments="ui:UiElement" x:Key="io_browser">[io_browser]</InOutArgument>
-                                          </ui:InvokeWorkflowFile.Arguments>
-                                          <sap:WorkflowViewStateService.ViewState>
-                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
-                                              <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
-                                            </scg:Dictionary>
-                                          </sap:WorkflowViewStateService.ViewState>
-                                        </ui:InvokeWorkflowFile>
-                                      </FlowStep>
-                                    </FlowStep.Next>
                                   </FlowStep>
                                 </FlowStep.Next>
                               </FlowStep>
@@ -445,7 +414,6 @@
       <x:Reference>__ReferenceID8</x:Reference>
       <x:Reference>__ReferenceID0</x:Reference>
       <x:Reference>__ReferenceID9</x:Reference>
-      <x:Reference>__ReferenceID10</x:Reference>
     </Flowchart>
   </Sequence>
 </Activity>
