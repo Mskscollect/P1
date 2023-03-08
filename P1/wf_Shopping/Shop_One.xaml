@@ -111,7 +111,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="527,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Shopping for next client :  Shop_For_One_Client.xaml&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="527,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Shopping for Client {0} : Shop_For_One_Client.xaml&quot;,io_clientID)]" />
     <ui:BuildDataTable sap2010:Annotation.AnnotationText="Start building the expense report that will be written and sent by the end of this workflow" DataTable="[io_expense_dt]" DisplayName="Start Building Expense Report (DT)" sap:VirtualizedContainerService.HintSize="527,102" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Item&quot; msdata:DataType=&quot;System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Purchased&quot; msdata:DataType=&quot;System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Cost&quot; msdata:DataType=&quot;System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Note&quot; msdata:DataType=&quot;System.Object, System.Private.CoreLib, Version=6.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e&quot; msdata:Caption=&quot;&quot; type=&quot;xs:anyType&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -183,30 +183,14 @@
             </ui:MultipleAssign>
             <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="If Item can be added to cart Then&#xA;1. Update values&#xA;2. Update inventory&#xA;3. Update expense report&#xA;4. Invoke 'Add_To_Cart.xaml'&#xA;Else&#xA;1. Write note&#xA;2. Exit" DisplayName="Check_Item.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="431,245" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_2" UnSafe="False" WorkflowFileName="wf_Shopping\Check_Item.xaml">
               <ui:InvokeWorkflowFile.Arguments>
-                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_purchased">
-                  <VisualBasicReference x:TypeArguments="x:Int32" ExpressionText="io_purchased" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_inventory_dt">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_inventory_dt" />
-                </InOutArgument>
-                <InArgument x:TypeArguments="x:Int32" x:Key="in_quantity">
-                  <VisualBasicValue x:TypeArguments="x:Int32" ExpressionText="out_quantity" />
-                </InArgument>
-                <InOutArgument x:TypeArguments="x:String" x:Key="io_note">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="io_note" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_clients_dt">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_clients_dt" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="x:String" x:Key="io_item">
-                  <VisualBasicReference x:TypeArguments="x:String" ExpressionText="out_item" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_expense_dt">
-                  <VisualBasicReference x:TypeArguments="sd:DataTable" ExpressionText="io_expense_dt" />
-                </InOutArgument>
-                <InOutArgument x:TypeArguments="ui:UiElement" x:Key="io_browser">
-                  <VisualBasicReference x:TypeArguments="ui:UiElement" ExpressionText="io_browser" />
-                </InOutArgument>
+                <InOutArgument x:TypeArguments="x:Int32" x:Key="io_purchased">[io_purchased]</InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_inventory_dt">[io_inventory_dt]</InOutArgument>
+                <InArgument x:TypeArguments="x:Int32" x:Key="in_quantity">[out_quantity]</InArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="io_note">[io_note]</InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_clients_dt">[io_clients_dt]</InOutArgument>
+                <InOutArgument x:TypeArguments="x:String" x:Key="io_item">[out_item]</InOutArgument>
+                <InOutArgument x:TypeArguments="sd:DataTable" x:Key="io_expense_dt">[io_expense_dt]</InOutArgument>
+                <InOutArgument x:TypeArguments="ui:UiElement" x:Key="io_browser">[io_browser]</InOutArgument>
               </ui:InvokeWorkflowFile.Arguments>
               <sap:WorkflowViewStateService.ViewState>
                 <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -232,18 +216,10 @@
     </ui:InvokeWorkflowFile>
     <ui:InvokeWorkflowFile ArgumentsVariable="{x:Null}" ContinueOnError="{x:Null}" sap2010:Annotation.AnnotationText="Write and email the receipt (Expense DT) to the client" DisplayName="Write_Expense.xaml - Invoke Workflow File" sap:VirtualizedContainerService.HintSize="527,144" sap2010:WorkflowViewState.IdRef="InvokeWorkflowFile_5" UnSafe="False" WorkflowFileName="wf_Shopping\Write_Expense.xaml">
       <ui:InvokeWorkflowFile.Arguments>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_clients_dt">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_clients_dt" />
-        </InArgument>
-        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_expense_dt">
-          <VisualBasicValue x:TypeArguments="sd:DataTable" ExpressionText="io_expense_dt" />
-        </InArgument>
-        <InArgument x:TypeArguments="x:String" x:Key="in_clientID">
-          <VisualBasicValue x:TypeArguments="x:String" ExpressionText="io_clientID" />
-        </InArgument>
-        <OutArgument x:TypeArguments="x:Double" x:Key="out_commision">
-          <VisualBasicReference x:TypeArguments="x:Double" ExpressionText="io_commission" />
-        </OutArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_clients_dt">[io_clients_dt]</InArgument>
+        <InArgument x:TypeArguments="sd:DataTable" x:Key="in_expense_dt">[io_expense_dt]</InArgument>
+        <InArgument x:TypeArguments="x:String" x:Key="in_clientID">[io_clientID]</InArgument>
+        <OutArgument x:TypeArguments="x:Double" x:Key="out_commision">[io_commission]</OutArgument>
       </ui:InvokeWorkflowFile.Arguments>
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">

@@ -8,7 +8,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>618,2922</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>486,2922</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Send_Receipt_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="58">
@@ -121,7 +121,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Writing expense report :  Write_Expense.xaml&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="434,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Writing expense report for Client {0}:  Write_Expense.xaml&quot;,in_clientID)]" />
     <Assign sap:VirtualizedContainerService.HintSize="434,61" sap2010:WorkflowViewState.IdRef="Assign_1">
       <Assign.To>
         <OutArgument x:TypeArguments="x:Double">[total]</OutArgument>
@@ -182,9 +182,7 @@
     <ui:SendMail Bcc="{x:Null}" Cc="{x:Null}" MailMessage="{x:Null}" Name="{x:Null}" ReplyTo="{x:Null}" SecurePassword="{x:Null}" TimeoutMS="{x:Null}" UseOAuth="{x:Null}" Body="[String.Format(&quot;Hi {0},{1}Here is your receipt for this week, thank you for using PEGA!&quot;, in_clients_dt.Rows(rowIndex)(&quot;First Name&quot;).ToString , Environment.NewLine)]" DisplayName="Email expense report (receipt)" Email="testmskscollect@gmail.com" EnableSSL="True" From="testmskscollect@gmail.com" sap:VirtualizedContainerService.HintSize="434,149" sap2010:WorkflowViewState.IdRef="SendMail_1" IgnoreCRL="False" IsBodyHtml="False" Password="cvspelygqfbhcjfs" Port="587" SecureConnection="Auto" Server="smtp.gmail.com" Subject="[String.Format(&quot;Receipt for Week of {0}&quot;,Now.AddDays(2-Weekday(Now)).ToString(&quot;MM-dd-yyyy&quot;))]" To="testmskscollect@gmail.com">
       <ui:SendMail.Files>
         <scg:List x:TypeArguments="InArgument(x:String)" Capacity="4">
-          <InArgument x:TypeArguments="x:String">
-            <VisualBasicValue x:TypeArguments="x:String" ExpressionText="String.Format(&quot;out\Week-of-{0}\{1}-{2}_{0}.xlsx&quot;,Now.AddDays(2-WeekDay(Now)).ToString(&quot;MM-dd-yyyy&quot;) , in_clients_dt.Rows(rowIndex)(&quot;First Name&quot;).ToString, in_clients_dt.Rows(rowIndex)(&quot;Last Name&quot;).ToString)" />
-          </InArgument>
+          <InArgument x:TypeArguments="x:String">[String.Format("out\Week-of-{0}\{1}-{2}_{0}.xlsx",Now.AddDays(2-WeekDay(Now)).ToString("MM-dd-yyyy") , in_clients_dt.Rows(rowIndex)("First Name").ToString, in_clients_dt.Rows(rowIndex)("Last Name").ToString)]</InArgument>
         </scg:List>
       </ui:SendMail.Files>
     </ui:SendMail>

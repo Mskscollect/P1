@@ -110,7 +110,7 @@
         <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="634,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Start Check_Item.xaml&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="634,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Checking PEGA for {0} : Check_Item.xaml&quot;,io_item)]" />
     <ui:LookupDataTable CellValue="{x:Null}" LookupColumnIndex="{x:Null}" LookupDataColumn="{x:Null}" TargetColumnIndex="{x:Null}" TargetColumnName="{x:Null}" TargetDataColumn="{x:Null}" sap2010:Annotation.AnnotationText="Get the row index of the desired item in Pega's inventory" DataTable="[io_inventory_dt]" DisplayName="Lookup Item in Inventory (DT)" sap:VirtualizedContainerService.HintSize="634,334" sap2010:WorkflowViewState.IdRef="LookupDataTable_1" LookupColumnName="Product" LookupValue="[io_item]" RowIndex="[rowIndex]">
       <sap:WorkflowViewStateService.ViewState>
         <scg:Dictionary x:TypeArguments="x:String, x:Object">
@@ -133,10 +133,7 @@
       <Flowchart.StartNode>
         <x:Reference>__ReferenceID11</x:Reference>
       </Flowchart.StartNode>
-      <FlowDecision x:Name="__ReferenceID11" DisplayName="If Item is in Pega's Inventory" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
-        <FlowDecision.Condition>
-          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="rowIndex &gt;= 0" />
-        </FlowDecision.Condition>
+      <FlowDecision x:Name="__ReferenceID11" Condition="[rowIndex &gt;= 0]" DisplayName="If Item is in Pega's Inventory" sap:VirtualizedContainerService.HintSize="154,87" sap2010:WorkflowViewState.IdRef="FlowDecision_1">
         <sap:WorkflowViewStateService.ViewState>
           <scg:Dictionary x:TypeArguments="x:String, x:Object">
             <av:Point x:Key="ShapeLocation">33,116.5</av:Point>
@@ -217,10 +214,7 @@
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:MultipleAssign>
                     <FlowStep.Next>
-                      <FlowDecision x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="Compares stock to quantity requested (in_quantity)" DisplayName="If there is enough stock" sap:VirtualizedContainerService.HintSize="141,144" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
-                        <FlowDecision.Condition>
-                          <VisualBasicValue x:TypeArguments="x:Boolean" ExpressionText="stock&gt;=in_quantity" />
-                        </FlowDecision.Condition>
+                      <FlowDecision x:Name="__ReferenceID6" sap2010:Annotation.AnnotationText="Compares stock to quantity requested (in_quantity)" Condition="[stock&gt;=in_quantity]" DisplayName="If there is enough stock" sap:VirtualizedContainerService.HintSize="141,144" sap2010:WorkflowViewState.IdRef="FlowDecision_3">
                         <sap:WorkflowViewStateService.ViewState>
                           <scg:Dictionary x:TypeArguments="x:String, x:Object">
                             <x:Boolean x:Key="IsExpanded">True</x:Boolean>

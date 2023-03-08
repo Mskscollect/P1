@@ -7,7 +7,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>682,3937</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>682,3939</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Add_To_Cart_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="37">
@@ -104,7 +104,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Forms</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence DisplayName="UI_Add_To_Cart" sap:VirtualizedContainerService.HintSize="692,3872" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence DisplayName="UI_Add_To_Cart" sap:VirtualizedContainerService.HintSize="692,3874" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Int32" Name="counter" />
       <Variable x:TypeArguments="x:Int32" Name="amount" />
@@ -114,7 +114,7 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="630,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Adding Item to Cart : UI_Add_To_Cart.xaml&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="630,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[String.Format(&quot;Adding {0} to Cart : UI_Add_To_Cart.xaml&quot;,in_item)]" />
     <ui:IfElseIf sap2010:Annotation.AnnotationText="The Pega website only allows you to add up to 20 of a single item to the cart a single click of the order button.&#xA;&#xA;These variables are part of ensuring we can order more than 20 items if neccessary. &#xA;&#xA;Amount: What amount we are going to pick from the select dropdown in the upcoming iteration&#xA;Counter: How many remaining  iterations there will be&#xA;&#xA;How these variables are determined  is altered slightly depending on whether the purchased amount is a multiple of 20, which is the purpose of the conditional." DisplayName="Multiple Assign: Dependent on purchased amount" sap:VirtualizedContainerService.HintSize="630,672" sap2010:WorkflowViewState.IdRef="IfElseIf_2">
       <ui:IfElseIf.ConditionBlocks>
         <sc:BindingList x:TypeArguments="ui:IfElseIfBlock" AllowEdit="True" AllowNew="True" AllowRemove="True" RaiseListChangedEvents="True">
@@ -178,13 +178,13 @@
         </scg:Dictionary>
       </sap:WorkflowViewStateService.ViewState>
     </ui:IfElseIf>
-    <uix:NApplicationCard sap2010:Annotation.AnnotationText="The UI Automation to add items to the cart on Pega's Website&#xA;&#xA;This workflow utilizes the quick order page of Pega's website. The quick order page is composed of a raw collection of datatables.&#xA;&#xA;Therefore, this workflow will implement the same strategy as 'Scrape_Inventory.xaml'. See that workflow for further reference to the strategy adopted to retrieve the UI elements.&#xA;&#xA;" AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: Inventory | Pega Studio Training Web Application" sap:VirtualizedContainerService.HintSize="630,2917" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[io_browser]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[io_browser]" ScopeGuid="e9a3a8eb-3f37-43e2-b73c-a1e4ad810bcc" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard sap2010:Annotation.AnnotationText="The UI Automation to add items to the cart on Pega's Website&#xA;&#xA;This workflow utilizes the quick order page of Pega's website. The quick order page is composed of a raw collection of datatables.&#xA;&#xA;Therefore, this workflow will implement the same strategy as 'Scrape_Inventory.xaml'. See that workflow for further reference to the strategy adopted to retrieve the UI elements.&#xA;&#xA;" AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: Inventory | Pega Studio Training Web Application" sap:VirtualizedContainerService.HintSize="630,2919" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[io_browser]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[io_browser]" ScopeGuid="e9a3a8eb-3f37-43e2-b73c-a1e4ad810bcc" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Browser Main" sap:VirtualizedContainerService.HintSize="596,2633" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence DisplayName="Browser Main" sap:VirtualizedContainerService.HintSize="596,2635" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enumTables" />
               <Variable x:TypeArguments="ui:UiElement" Name="targetTable" />
@@ -199,9 +199,9 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <uix:NGoToUrl DisplayName="Go to Quick Order page" sap:VirtualizedContainerService.HintSize="534,82" sap2010:WorkflowViewState.IdRef="NGoToUrl_1" Url="https://training.openspan.com/order/quick_order" Version="V3" />
-            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText=" The Pega website refreshes every time items are added to the cart which means that we need to re-evaluate the UI elements with every iteration if we want to be able to purchase more than 20 of an item. This is the purpose of having a Do-While loop encompass the whole process" Condition="[counter&gt;0]" DisplayName="Loop until the purchase quantity is fullfilled" sap:VirtualizedContainerService.HintSize="534,2396" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+            <ui:InterruptibleDoWhile CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText=" The Pega website refreshes every time items are added to the cart which means that we need to re-evaluate the UI elements with every iteration if we want to be able to purchase more than 20 of an item. This is the purpose of having a Do-While loop encompass the whole process" Condition="[counter&gt;0]" DisplayName="Loop until the purchase quantity is fullfilled" sap:VirtualizedContainerService.HintSize="534,2398" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
               <ui:InterruptibleDoWhile.Body>
-                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="498,2158" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="498,2160" sap2010:WorkflowViewState.IdRef="Sequence_5">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
@@ -389,7 +389,7 @@
                     </uix:NSelectItem.Target>
                   </uix:NSelectItem>
                   <uix:NClick ClickType="Single" DisplayName="Click on order button" sap:VirtualizedContainerService.HintSize="436,137" sap2010:WorkflowViewState.IdRef="NClick_3" InUiElement="[orderbutton]" KeyModifiers="None" MouseButton="Left" ScopeIdentifier="e9a3a8eb-3f37-43e2-b73c-a1e4ad810bcc" Version="V3" />
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="436,90" sap2010:WorkflowViewState.IdRef="WriteLine_1" Text="[String.Format(&quot;Added {0} {1} to the cart&quot;,amount,in_item)]" />
+                  <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="436,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[String.Format(&quot;Added {0} {1} to the cart&quot;,amount,in_item)]" />
                   <ui:MultipleAssign DisplayName="Set up variables for potential next iteration" sap:VirtualizedContainerService.HintSize="436,132" sap2010:WorkflowViewState.IdRef="MultipleAssign_3">
                     <ui:MultipleAssign.AssignOperations>
                       <scg:List x:TypeArguments="ui:AssignOperation" Capacity="4">

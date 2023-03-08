@@ -6,7 +6,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>584,3970</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>584,4106</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Pega_Inventory_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="78">
@@ -117,7 +117,7 @@
       <AssemblyReference>Microsoft.VisualBasic.Core</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="Gets Pega's current inventory from its website" DisplayName="Scrape_Inventory" sap:VirtualizedContainerService.HintSize="594,3905" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="Gets Pega's current inventory from its website" DisplayName="Scrape_Inventory" sap:VirtualizedContainerService.HintSize="594,4041" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:String" Default="Aniseed Syrup" Name="name" />
       <Variable x:TypeArguments="x:String" Name="price" />
@@ -131,6 +131,7 @@
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[&quot;Scraping Inventory :  Scrape_Inventory.xaml&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Building Datatable&quot;]" />
     <ui:BuildDataTable DataTable="[out_inventory_dt]" DisplayName="Start Building Pega's Inventory (DT)" sap:VirtualizedContainerService.HintSize="532,60" sap2010:WorkflowViewState.IdRef="BuildDataTable_1" TableInfo="&lt;NewDataSet&gt;&#xA;  &lt;xs:schema id=&quot;NewDataSet&quot; xmlns=&quot;&quot; xmlns:xs=&quot;http://www.w3.org/2001/XMLSchema&quot; xmlns:msdata=&quot;urn:schemas-microsoft-com:xml-msdata&quot;&gt;&#xA;    &lt;xs:element name=&quot;NewDataSet&quot; msdata:IsDataSet=&quot;true&quot; msdata:MainDataTable=&quot;TableName&quot; msdata:UseCurrentLocale=&quot;true&quot;&gt;&#xA;      &lt;xs:complexType&gt;&#xA;        &lt;xs:choice minOccurs=&quot;0&quot; maxOccurs=&quot;unbounded&quot;&gt;&#xA;          &lt;xs:element name=&quot;TableName&quot;&gt;&#xA;            &lt;xs:complexType&gt;&#xA;              &lt;xs:sequence&gt;&#xA;                &lt;xs:element name=&quot;Product&quot; msdata:Caption=&quot;&quot; type=&quot;xs:string&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Price_x0020__x0028__x0024__x0029_&quot; msdata:Caption=&quot;&quot; type=&quot;xs:double&quot; minOccurs=&quot;0&quot; /&gt;&#xA;                &lt;xs:element name=&quot;Stock&quot; msdata:Caption=&quot;&quot; type=&quot;xs:int&quot; minOccurs=&quot;0&quot; /&gt;&#xA;              &lt;/xs:sequence&gt;&#xA;            &lt;/xs:complexType&gt;&#xA;          &lt;/xs:element&gt;&#xA;        &lt;/xs:choice&gt;&#xA;      &lt;/xs:complexType&gt;&#xA;    &lt;/xs:element&gt;&#xA;  &lt;/xs:schema&gt;&#xA;&lt;/NewDataSet&gt;" />
     <ui:MultipleAssign DisplayName="Create Inventory Values" sap:VirtualizedContainerService.HintSize="532,163" sap2010:WorkflowViewState.IdRef="MultipleAssign_1">
       <ui:MultipleAssign.AssignOperations>
@@ -168,13 +169,13 @@
         </scg:List>
       </ui:MultipleAssign.AssignOperations>
     </ui:MultipleAssign>
-    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: Home | Pega Studio Training Web Application" sap:VirtualizedContainerService.HintSize="532,3040" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[io_browser]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[io_browser]" ScopeGuid="808ee09b-c064-42dc-bdc1-aa0060e80900" Version="V2" WindowResize="Maximize">
+    <uix:NApplicationCard AttachMode="SingleWindow" CloseMode="Never" DisplayName="Use Browser Chrome: Home | Pega Studio Training Web Application" sap:VirtualizedContainerService.HintSize="532,3044" sap2010:WorkflowViewState.IdRef="NApplicationCard_1" InUiElement="[io_browser]" InteractionMode="DebuggerApi" OpenMode="Never" OutUiElement="[io_browser]" ScopeGuid="808ee09b-c064-42dc-bdc1-aa0060e80900" Version="V2" WindowResize="Maximize">
       <uix:NApplicationCard.Body>
         <ActivityAction x:TypeArguments="x:Object">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="x:Object" Name="WSSessionData" />
           </ActivityAction.Argument>
-          <Sequence sap2010:Annotation.AnnotationText="The inventory table on Pega's website has the appearance of a single table. &#xA;&#xA;However, every visible row is actually an individual table on its own. This series of tables is not contained as a table itself or a list of tables. It is raw entries of tables simply adjacent to each other. &#xA;&#xA;Because of this, the approach to extracting data has to be rather creative." DisplayName="Go to Inventory Page and Extract Data" sap:VirtualizedContainerService.HintSize="498,2903" sap2010:WorkflowViewState.IdRef="Sequence_2">
+          <Sequence sap2010:Annotation.AnnotationText="The inventory table on Pega's website has the appearance of a single table. &#xA;&#xA;However, every visible row is actually an individual table on its own. This series of tables is not contained as a table itself or a list of tables. It is raw entries of tables simply adjacent to each other. &#xA;&#xA;Because of this, the approach to extracting data has to be rather creative." DisplayName="Go to Inventory Page and Extract Data" sap:VirtualizedContainerService.HintSize="498,2907" sap2010:WorkflowViewState.IdRef="Sequence_2">
             <Sequence.Variables>
               <Variable x:TypeArguments="x:Boolean" Name="isFirst" />
             </Sequence.Variables>
@@ -215,13 +216,13 @@
                 </scg:Dictionary>
               </sap:WorkflowViewStateService.ViewState>
             </Assign>
-            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="436,1978" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[enumTables]">
+            <ui:ForEach x:TypeArguments="ui:UiElement" CurrentIndex="{x:Null}" sap2010:Annotation.AnnotationText="" DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="436,1980" sap2010:WorkflowViewState.IdRef="ForEach`1_5" Values="[enumTables]">
               <ui:ForEach.Body>
                 <ActivityAction x:TypeArguments="ui:UiElement">
                   <ActivityAction.Argument>
                     <DelegateInArgument x:TypeArguments="ui:UiElement" Name="table" />
                   </ActivityAction.Argument>
-                  <Sequence DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="400,1821" sap2010:WorkflowViewState.IdRef="Sequence_4">
+                  <Sequence DisplayName="For Each Table in Enumerable of Tables" sap:VirtualizedContainerService.HintSize="400,1823" sap2010:WorkflowViewState.IdRef="Sequence_4">
                     <Sequence.Variables>
                       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enumTemp1" />
                       <Variable x:TypeArguments="scg:IEnumerable(ui:UiElement)" Name="enumTemp2" />
@@ -328,7 +329,7 @@
                         </scg:Dictionary>
                       </sap:WorkflowViewStateService.ViewState>
                     </ui:AddDataRow>
-                    <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[String.Format(&quot;Added {0} {1} to Inventory for ${2} each&quot;,stock,name,price)]" />
+                    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_4" Level="Info" Message="[String.Format(&quot;Added {0} {1} to Inventory for ${2} each&quot;,stock,name,price)]" />
                   </Sequence>
                 </ActivityAction>
               </ui:ForEach.Body>
@@ -346,6 +347,6 @@
       </uix:NApplicationCard.TargetApp>
     </uix:NApplicationCard>
     <ui:WriteRange StartingCell="{x:Null}" AddHeaders="True" DataTable="[out_inventory_dt]" DisplayName="Write to Inventory Workbook" sap:VirtualizedContainerService.HintSize="532,116" sap2010:WorkflowViewState.IdRef="WriteRange_1" SheetName="Inventory" WorkbookPath="[String.Format(&quot;in\Inventory.xlsx&quot;,Now.AddDays(2-WeekDay(Now)).ToString(&quot;MM-dd-yyyy&quot;))]" />
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Wrote Inventory.xlsx&quot;]" />
+    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="532,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Wrote to Inventory.xlsx&quot;]" />
   </Sequence>
 </Activity>

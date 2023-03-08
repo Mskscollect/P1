@@ -5,7 +5,7 @@
   <VisualBasic.Settings>
     <x:Null />
   </VisualBasic.Settings>
-  <sap:VirtualizedContainerService.HintSize>622,2941</sap:VirtualizedContainerService.HintSize>
+  <sap:VirtualizedContainerService.HintSize>622,3073</sap:VirtualizedContainerService.HintSize>
   <sap2010:WorkflowViewState.IdRef>Get_Clients_From_Email_1</sap2010:WorkflowViewState.IdRef>
   <TextExpression.NamespacesForImplementation>
     <scg:List x:TypeArguments="x:String" Capacity="86">
@@ -124,7 +124,7 @@
       <AssemblyReference>UiPath.System.Activities.Design</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap2010:Annotation.AnnotationText="1. Scrapes emails for simulated client attachments&#xA;2. Renames attachments to reflect clientID and this week's Monday's date&#xA;3. Renames attachment sheet names to reflect clientID" DisplayName="Scrape_Emails" sap:VirtualizedContainerService.HintSize="632,2876" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap2010:Annotation.AnnotationText="1. Scrapes emails for simulated client attachments&#xA;2. Renames attachments to reflect clientID and this week's Monday's date&#xA;3. Renames attachment sheet names to reflect clientID" DisplayName="Scrape_Emails" sap:VirtualizedContainerService.HintSize="632,3008" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="scg:List(snm:MailMessage)" Name="messages" />
       <Variable x:TypeArguments="sd:DataTable" Name="out_shoplist_dt" />
@@ -144,13 +144,13 @@
       </sap:WorkflowViewStateService.ViewState>
     </ui:GetIMAPMailMessages>
     <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="570,92" sap2010:WorkflowViewState.IdRef="LogMessage_2" Level="Info" Message="[&quot;Retreived IMAP Mail Messages&quot;]" />
-    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For each email, save the attachments and rename the file to reflect the Client ID" sap:VirtualizedContainerService.HintSize="570,1043" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[messages]">
+    <ui:ForEach x:TypeArguments="snm:MailMessage" CurrentIndex="{x:Null}" DisplayName="For each email, save the attachments and rename the file to reflect the Client ID" sap:VirtualizedContainerService.HintSize="570,1307" sap2010:WorkflowViewState.IdRef="ForEach`1_2" Values="[messages]">
       <ui:ForEach.Body>
         <ActivityAction x:TypeArguments="snm:MailMessage">
           <ActivityAction.Argument>
             <DelegateInArgument x:TypeArguments="snm:MailMessage" Name="email" />
           </ActivityAction.Argument>
-          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,918" sap2010:WorkflowViewState.IdRef="Sequence_9">
+          <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="400,1182" sap2010:WorkflowViewState.IdRef="Sequence_9">
             <Sequence.Variables>
               <Variable x:TypeArguments="scg:IEnumerable(x:String)" Name="tempFile" />
               <Variable x:TypeArguments="snm:AttachmentCollection" Name="enumFile" />
@@ -164,6 +164,7 @@
               </scg:Dictionary>
             </sap:WorkflowViewStateService.ViewState>
             <ui:SaveMailAttachments Attachments="[tempFile]" DisplayName="Save Attachments to indicated folder" ExcludeInlineAttachments="False" FolderPath="[String.Format(&quot;in\Week of {0}\&quot;, Now.AddDays(2-Weekday(Now)).ToString(&quot;MM-dd-yyyy&quot;))]" sap:VirtualizedContainerService.HintSize="338,90" sap2010:WorkflowViewState.IdRef="SaveMailAttachments_2" Message="[email]" OverwriteExisting="False" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_5" Level="Info" Message="[&quot;Saved attachment&quot;]" />
             <Assign DisplayName="Get current client email" sap:VirtualizedContainerService.HintSize="338,61" sap2010:WorkflowViewState.IdRef="Assign_1">
               <Assign.To>
                 <OutArgument x:TypeArguments="x:String">[clientEmail]</OutArgument>
@@ -182,11 +183,11 @@
               </Assign.Value>
             </Assign>
             <ui:RenameFileX DisplayName="Rename the file to include Client ID" FilePath="[String.Format(&quot;in\Week of {0}\{1}&quot;, Now.AddDays(2-Weekday(Now)).ToString(&quot;MM-dd-yyyy&quot;),fileName)]" sap:VirtualizedContainerService.HintSize="338,143" sap2010:WorkflowViewState.IdRef="RenameFileX_1" KeepExtension="True" NewName="[String.Format(&quot;{0}_Week-of-{1}&quot;,in_clients_dt.Rows(rowIndex)(&quot;Client ID&quot;), Now.AddDays(2-Weekday(Now)).ToString(&quot;MM-dd-yyyy&quot;))]" />
+            <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="338,92" sap2010:WorkflowViewState.IdRef="LogMessage_6" Level="Info" Message="[&quot;Renamed attachment&quot;]" />
           </Sequence>
         </ActivityAction>
       </ui:ForEach.Body>
     </ui:ForEach>
-    <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="570,92" sap2010:WorkflowViewState.IdRef="LogMessage_3" Level="Info" Message="[&quot;Saved and renamed attachments&quot;]" />
     <ui:ForEachFileX DisplayName="For Each File in this week's folder, change the sheet name to reflect the Client ID" Folder="[String.Format(&quot;in\Week of {0}\&quot;, Now.AddDays(2-Weekday(Now)).ToString(&quot;MM-dd-yyyy&quot;))]" sap:VirtualizedContainerService.HintSize="570,900" sap2010:WorkflowViewState.IdRef="ForEachFileX_1" IncludeSubDirectories="False" OrderBy="NameAscFirst" SkipFolderWithoutPermission="False">
       <ui:ForEachFileX.Body>
         <ActivityAction x:TypeArguments="si:FileInfo, x:Int32">
@@ -196,7 +197,7 @@
           <ActivityAction.Argument2>
             <DelegateInArgument x:TypeArguments="x:Int32" Name="CurrentIndex" />
           </ActivityAction.Argument2>
-          <ueab:ExcelProcessScopeX DisplayAlerts="{x:Null}" ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" ShowExcelWindow="{x:Null}" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="536,650" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1">
+          <ueab:ExcelProcessScopeX ExistingProcessAction="{x:Null}" FileConflictResolution="{x:Null}" LaunchMethod="{x:Null}" LaunchTimeout="{x:Null}" MacroSettings="{x:Null}" ProcessMode="{x:Null}" DisplayAlerts="False" DisplayName="Excel Process Scope" sap:VirtualizedContainerService.HintSize="536,650" sap2010:WorkflowViewState.IdRef="ExcelProcessScopeX_1" ShowExcelWindow="False">
             <ueab:ExcelProcessScopeX.Body>
               <ActivityAction x:TypeArguments="ui:IExcelProcess">
                 <ActivityAction.Argument>
